@@ -10,10 +10,13 @@ builder.Services.AddDbContext<SalesWebMvcContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
-SeedingService SS = new SeedingService(_context);
-
 builder.Services.AddScoped<SeedingService>();
 
+var teste = builder.Services.BuildServiceProvider();
+
+var seeding = teste.GetRequiredService<SeedingService>();
+
+seeding.Seed();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
