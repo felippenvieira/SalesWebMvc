@@ -6,6 +6,7 @@ using SalesWebMvc.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("SalesWebMvcContext");
+
 builder.Services.AddDbContext<SalesWebMvcContext>(options =>
 {
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
@@ -14,11 +15,11 @@ builder.Services.AddDbContext<SalesWebMvcContext>(options =>
 builder.Services.AddScoped<SeedingService>();
 builder.Services.AddScoped<SellerService>();
 
-var teste = builder.Services.BuildServiceProvider();
+//var teste = builder.Services.BuildServiceProvider();
 
-var seeding = teste.GetRequiredService<SeedingService>();
+//var seeding = teste.GetRequiredService<SeedingService>();
 
-seeding.Seed();
+//seeding.Seed();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
